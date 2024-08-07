@@ -1,0 +1,21 @@
+*{margin: 0;
+padding: 0;
+box-sizing: border-box;}
+body {
+margin:0;
+background-image: url("./assets/bg-image.jpg");
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment: fixed;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+}
+.title{
+  background-color: rgba(128, 128, 128, 0.568);
+  display: inline-block;
+  border-radius: 1rem;
+  padding: 0rem 1rem;
+  
+}
