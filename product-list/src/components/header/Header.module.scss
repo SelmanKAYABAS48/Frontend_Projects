@@ -18,6 +18,10 @@
     // align-items: center;
     // gap: 1rem;
     @include flex(row, center, 1rem);
+    
+    //? oluşturduğum mixin'i @include ile çağırdım
+    
+
     button {
       padding: 1rem;
       border-radius: 1rem;
