@@ -4,13 +4,26 @@ const ProductList = ({ products }) => {
   return (
     <div className="products-list">
 
-      { products.map(product => <ProductCard  key={product.id} product={product}/>)}
+      {/* { products.map(product => <ProductCard  key={product.id} product={product}/>)} */}
+    
+
+      {/* //* map işleminde product card'ları bir dizi içerisinde dizi elemanı adeti kadar biriktiriyor dizi içindeki ana eleman ProductCard ve bu elemanın yani kapsayıcı olması nedeniyle içindeki elemanların değil bunun bir key'e sahip olamsını istiyorum */}
 
       {/* //!Best Practice Alt component'e gönderme */}
 
       {/* //? Buradan açmadan gönderip alt componentte karşılayıp içini açma. product'ı bu şekil gönderdim orada destruct ettim */}
 
-      {/* component'te key id vermiştim ancak prop olarak verdiğimde key'i map yaparken vereceğim */}
+      {/* //* component'te key id vermiştim ancak prop olarak verdiğimde key'i map yaparken vereceğim  burada component'e vermemin sebebi react */}
+
+      { products.map(product => <ProductCard  key={product.id} {...product}/>)}
+     
+      {/* //? product = {product} obje olarak gönderiyoruz yani obje alanına elemanlar ekleniyor..Obje olduğundan dolayı spread yaptık.*/}
+
+      {/*  //! product={product olarak gönderirsem} karşılarken props.product.image olarak karşılamam gerekir. eğer props'ta çok fazla varsa tek tek'de gönderebiliriz. image={image} gibi */}
+
+      {/* //* Eğer karşılamada katman azaltmak istiyorsam yani props:{img:img} gönderip props.img şeklinde yakalamak için ...products olarak gönderebilirim. */}
+
+
       
       {/* {products.map(({ id, price, image, title }) => {
    //  bu şekilde return yazmayabilirim.
