@@ -7,13 +7,13 @@
   .card {
     width: 350px;
     height: $cardHeight;
-    position: relative;
-    overflow: hidden;
+    position: relative; //*Eğer burada relative vermezsem priceler üst üste toplanıyor
+    overflow: hidden; //! card'tan taşmaları engelliyor Yani card'tan taşan elemanı gösterme yaptık
     .price {
-      position: absolute;
+      position: absolute; //! Absoluote'un düzgün çalışması için parent'ına relative verilir
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); //* Perfect ortalama içiön bu uygulanır
       background-color: $cardBgColor;
       color: $cardColor;
       padding: $cardPadding;
@@ -23,33 +23,33 @@
     }
 
     img {
-      width: 100%;
+      width: 100%;  // card'ın genişliği kadar 
       height: $cardHeight;
       border-radius: $borderRadius;
       filter: sepia(100%);
     }
-    &_over {
-      width: 100%;
+    &_over {  //! burada card_over card'ın devamı olduğu için  &_over dedik
+      width: 100%; //* İçindeki elemanı kapsıyor
       position: absolute;
-      bottom: 0;
+      bottom: 0; //!0 vererek oturttum left ve right'tan da ayarlama yapabilirim 0 vererek oturtabilirim
       background-color: $cardBgColor;
       color: darken($cardColor, 50%);
       font-size: 1.2rem;
       padding: $cardPadding;
       border-radius: $borderRadius;
-      transform: translateX(100%);
-      transition: transform 0.7s;
-      height: 25%;
-      overflow: auto;
+      transform: translateY(100%); //! burada y ekseninde 100% kaydır oldu x ekseni de yapabiliriz
+      transition: transform 0.7s; //*transform'u takip et dedik
+      height: 25%; //? kimi card yükselkliği fazlaydı sabitledik ancak bu sefer yazılar taşıyor
+      overflow: auto; //* yazıların taşmasını da bu şekilde engelledik
       &::-webkit-scrollbar {
-        display: none;
+        display: none;  //! overflow'da scroll çıktı ve bu şekilde kaldırdık & ile card_over'ın içindeyim ona none verdim.Bunu body'de de uygulayabilirdim
       }
     }
     &:hover .card_over {
       transform: translateX(0%);
     }
     &:hover img {
-      filter: none;
+      filter: none; //! image'e verdiğimiz filter'ı kaldırdık
     }
   }
 }
