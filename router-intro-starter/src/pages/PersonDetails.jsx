@@ -24,7 +24,7 @@ const PersonDetails = () => {
         {person?.first_name} {person?.last_name}{" "}
       </h6>
       <p>{person?.email}</p>
-      <button className="btn btn-danger" onClick={() => navigate(-1)} >Back</button> <br/>
+      <button className="btn btn-danger me-2" onClick={() => navigate(-1)} >Back</button> 
       <button className="btn btn-success" onClick={() => navigate("/")} >Home</button>
     </div>
   );
