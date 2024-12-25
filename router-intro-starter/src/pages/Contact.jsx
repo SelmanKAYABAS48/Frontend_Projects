@@ -1,5 +1,8 @@
+import { useState } from "react";
 const Contact = () => {
-  return <div>Contact</div>;
+
+  
+  return <div></div>;
 };
 
 export default Contact;
