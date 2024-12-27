@@ -1,35 +1,33 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const People = () => {
-const  [people,setPeople] = useState([])
+const PersonDetails = () => {
+  const [person, setPerson] = useState([]);
 
-const getPeople = async()=>{
-    fetch("https://reqres.in/api/users")
-    .then((res)=>res.json())
-    .then((data)=>setPeople(data.data))
-    .catch((err)=>console.log(err))
-}
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-useEffect(()=>{
-    getPeople()},[])
+  const getPerson = () => {
+    fetch(`https://reqres.in/api/users`)
+      .then((res) => res.json())
+      .then((data) => setPerson(data.data))
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getPerson();
+  }, []);
   return (
-    <div className='container text-center mt-4'>
-        <h1>People</h1>
-        <div className='row justify-content-center g-3'>
-            {people?.map((person)=>{
-                const {id,email,first_name,last_name,avatar} = person
-                return(
-                    <div className='col-sm-12 col-md-6 col-lg-4'
-                    key={id}
-                    type="button">
-                        <img className='rounded' src={avatar} alt="" />
-                        <h6>{first_name}{last_name}</h6>
-                    </div>
-                )
-            })}
-        </div>
+    <div className="container text-center mt-4">
+      <img className="rounded" src={person?.avatar} alt="img" />
+      <h6>
+        {" "}
+        {person?.first_name} {person?.last_name}{" "}
+      </h6>
+      <p>{person?.email}</p>
+      <button className="btn btn-danger" onClick={() => navigate(-1)} >Back</button> <br/>
+      <button className="btn btn-success" onClick={() => navigate("/")} >Home</button>
     </div>
-  )
-}
+  );
+};
 
-export default People
+export default PersonDetails;
